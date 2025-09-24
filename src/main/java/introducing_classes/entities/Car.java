@@ -27,4 +27,8 @@ public class Car {
     public int calcAge(int currentYear){
         return currentYear - year;
     }
+
+    public String toString(){
+        return "Car{make=" + make + ", model=" + model + ", license=" + license + ", year=" + year + "}";
+    }
 }

@@ -24,7 +24,7 @@ public class CarDealer {
         Car[] listing = {car1, car2, car3};
 
         for(Car c: listing){
-            System.out.println(c.format());
+            System.out.println(c);
         }
 
     }
