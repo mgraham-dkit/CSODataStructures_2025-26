@@ -1,5 +1,7 @@
 package introducing_classes.entities;
 
+import java.util.Objects;
+
 public class Car {
     private String make;
     private String model;
@@ -30,5 +32,38 @@ public class Car {
 
     public String toString(){
         return "Car{make=" + make + ", model=" + model + ", license=" + license + ", year=" + year + "}";
+    }
+
+//    public boolean equals(Object o) {
+//        if(this == o){
+//            return true;
+//        }
+//        if (o == null) {
+//            return false;
+//        }
+//        if (!(o instanceof Car)) {
+//            return false;
+//        }
+//
+//        Car other = (Car) o;
+//
+//        if (!this.license.equals(other.license)){
+//            return false;
+//        }
+//
+//        return true;
+//    }
+
+
+    @Override
+    public final boolean equals(Object o) {
+        if (!(o instanceof Car car)) return false;
+
+        return Objects.equals(license, car.license);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(license);
     }
 }

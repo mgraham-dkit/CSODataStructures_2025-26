@@ -23,9 +23,33 @@ public class CarDealer {
 
         Car[] listing = {car1, car2, car3};
 
+        // Using toString
         for(Car c: listing){
             System.out.println(c);
         }
 
+        // Comparing objects
+        Car car4 = new Car("Audi", "A5", "252-LH-829", 2025);
+        if(car1 == car4){
+            System.out.println("car1 and car4 are equal");
+            System.out.println("car1 data: " + car1);
+            System.out.println("car4 data: " + car4);
+        }else{
+            System.out.println("car1 and car4 are different");
+            System.out.println("car1 data: " + car1);
+            System.out.println("car4 data: " + car4);
+        }
+
+        System.out.println();
+
+        if(car1.equals(car4)){
+            System.out.println("car1 and car4 are equal");
+            System.out.println("car1 data: " + car1);
+            System.out.println("car4 data: " + car4);
+        }else{
+            System.out.println("car1 and car4 are different");
+            System.out.println("car1 data: " + car1);
+            System.out.println("car4 data: " + car4);
+        }
     }
 }
