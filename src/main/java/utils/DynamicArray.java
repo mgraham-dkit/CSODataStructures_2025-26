@@ -118,6 +118,42 @@ public class DynamicArray {
         // Increase the number of elements in the list
         size++;
     }
+
+    public int set(int position, int element){
+        validatePosition(position);
+
+        int originalValue = data[position];
+        data[position] = element;
+
+        return originalValue;
+    }
+
+    public boolean removeElement(int element){
+        int pos = indexOf(element);
+        if(pos == -1){
+            return false;
+        }
+
+        remove(pos);
+        return true;
+    }
+
+    public void join(DynamicArray other){
+        // If there's not enough space in the array
+        if(this.size + other.size > data.length){
+            // Make a new array with enough space to hold all data in this internal array
+            // and the other list's internal array
+            int [] tempData = new int[data.length + other.data.length];
+            // Copy the data from this internal array into the temporary array
+            System.arraycopy(this.data, 0, tempData, 0, this.size);
+            // Replace this list's internal array with the temporary one
+            this.data = tempData;
+        }
+        // Copy everything from the other list into this one
+        System.arraycopy(other.data, 0, this.data, this.size, other.size);
+        // Increase count to reflect joined elements
+        this.size = this.size + other.size;
+    }
 }
 
 
