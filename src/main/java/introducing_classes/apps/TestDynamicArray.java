@@ -2,8 +2,11 @@ package introducing_classes.apps;
 
 import utils.DynamicArray;
 
+import java.util.ArrayList;
+
 public class TestDynamicArray {
     public static void main(String[] args) {
+        ArrayList<String> list = new ArrayList<>();
         int [] sourceInfo = {1, 2, 3, 4, 5, 6};
         DynamicArray myList = new DynamicArray();
 
