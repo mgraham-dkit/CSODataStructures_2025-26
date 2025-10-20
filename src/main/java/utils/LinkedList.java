@@ -47,6 +47,8 @@ public class LinkedList {
             for (int i = 0; i < index - 1; i++) {
                 current = current.next;
             }
+            newNode.next = current.next;
+            current.next = newNode;
         }
 
         size++;
