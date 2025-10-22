@@ -2,7 +2,9 @@ package utils;
 
 public class LinkedList {
     private int size;
+    // Track the start of the list (so we know where data begins)
     private Node head;
+    // Track the end of the list (so we can add new elements to the end more efficiently)
     private Node tail;
 
     public LinkedList(){
@@ -26,12 +28,20 @@ public class LinkedList {
     }
 
     public void add(int value){
+        // Wrap the data to be added in a Node so it can be attached to the linked list chain
         Node newNode = new Node(value);
+        // If the head is null, the list is empty
         if(head == null){
+            // The first element in the list should be the new node
             head = newNode;
+            // The last element in the list should ALSO be the new node
             tail = newNode;
         }else {
+            // If the head is not null, update the tail to add after the end of the list
+            // (set the end of the list to point to the new node)
             tail.next = newNode;
+            // Now that the new node is the final element in the list,
+            // update tail to point there
             tail = newNode;
         }
         size++;
