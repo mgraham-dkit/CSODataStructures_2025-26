@@ -3,10 +3,12 @@ package utils;
 public class LinkedList {
     private int size;
     private Node head;
+    private Node tail;
 
     public LinkedList(){
         this.size = 0;
         this.head = null;
+        this.tail = null;
     }
 
     private static class Node{
@@ -19,16 +21,18 @@ public class LinkedList {
         }
     }
 
+    public int size(){
+        return size;
+    }
+
     public void add(int value){
         Node newNode = new Node(value);
         if(head == null){
             head = newNode;
+            tail = newNode;
         }else {
-            Node current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            tail.next = newNode;
+            tail = newNode;
         }
         size++;
     }
@@ -52,6 +56,19 @@ public class LinkedList {
         }
 
         size++;
+    }
+
+    public int get(int index){
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException("Supplied index is outside boundary of list");
+        }
+
+        Node current = head;
+        for(int i = 0; i < index; i++){
+            current = current.next;
+        }
+
+        return current.data;
     }
 
     // todo: size() -> return the size of the list
