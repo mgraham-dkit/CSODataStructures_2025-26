@@ -18,8 +18,12 @@ public class SensorEventGenerator {
         return new SensorEvent(id, source, description, accuracy);
     }
 
-    public static SensorEvent[] generateRandomSensorEvents() {
-        SensorEvent [] events = new SensorEvent[5];
+    public static SensorEvent[] generateRandomSensorEvents(int size) {
+        if(size < 1){
+            throw new IllegalArgumentException("Size of array to be generated must be at least 1");
+        }
+
+        SensorEvent [] events = new SensorEvent[size];
         for (int i = 0; i < events.length; i++) {
             events[i] = generateEvent();
         }
