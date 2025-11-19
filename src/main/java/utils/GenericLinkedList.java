@@ -3,10 +3,12 @@ package utils;
 public class GenericLinkedList<E> {
     private int size;
     private Node<E> head;
+    private Node<E> tail;
 
     public GenericLinkedList(){
         this.size = 0;
         this.head = null;
+        this.tail = null;
     }
 
     private static class Node<E>{
@@ -44,12 +46,9 @@ public class GenericLinkedList<E> {
         if(head == null){
             head = newNode;
         }else {
-            Node<E> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            tail.next = newNode;
         }
+        tail = newNode;
         size++;
     }
 
@@ -57,10 +56,17 @@ public class GenericLinkedList<E> {
         if(index < 0 || index > size){
             throw new IndexOutOfBoundsException("Supplied index is outside boundary of list");
         }
+        if(index == size){
+            add(elem);
+            return;
+        }
 
         Node<E> newNode = new Node<E>(elem);
         if(index == 0){
             newNode.next = head;
+            if(head == null){
+                tail = newNode;
+            }
             head = newNode;
         }else {
             Node<E> current = head;
@@ -69,8 +75,38 @@ public class GenericLinkedList<E> {
             }
             newNode.next = current.next;
             current.next = newNode;
+            if(current == tail){
+                tail = newNode;
+            }
         }
 
         size++;
+    }
+
+    public E remove(int index){
+        checkIndex(index);
+        E removed = null;
+        if(index == 0){
+            removed = head.data;
+            head = head.next;
+            if(head == null){
+                tail = null;
+            }
+        }else{
+            Node<E> prev = head;
+            Node<E> current = head.next;
+            for (int i = 1; i < index; i++) {
+                prev = current;
+                current = current.next;
+            }
+            removed = current.data;
+            prev.next = current.next;
+            if(current == tail){
+                tail = prev;
+            }
+        }
+
+        size--;
+        return removed;
     }
 }

@@ -11,12 +11,20 @@ public class GenericLinkedListTestBed {
 
         displayList(list);
 
-        System.out.println("Add new element to end of list (confirm tail is still accurately placed");
+        System.out.println("Add new element to end of list (confirm tail is still accurately placed)");
         list.add(list.size(), 100);
         displayList(list);
 
-        System.out.println("Add new element to end of list (confirm tail is still accurately placed");
-        list.add(list.size(), 200);
+        System.out.println("Add new element to middle of list (confirm tail is still accurately placed)");
+        list.add(list.size()/2, 200);
+        displayList(list);
+
+        System.out.println("Add new element to start of list");
+        list.add(0, 500);
+        displayList(list);
+
+        System.out.println("Remove element from middle of list (currently: " + list.get(list.size()/2) + ")");
+        list.remove(list.size()/2);
         displayList(list);
     }
 
