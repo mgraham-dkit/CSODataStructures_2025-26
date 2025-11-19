@@ -3,6 +3,7 @@ package utils;
 import java.util.EmptyStackException;
 
 public class CompositionStack<E> {
+    private static final int DEFAULT_MAX = 10;
     private ArrayList<E> stack;
 
     public CompositionStack(){
@@ -10,6 +11,10 @@ public class CompositionStack<E> {
     }
 
     public void push(E elem){
+        if(stack.size() == DEFAULT_MAX){
+            throw new IllegalStateException("Stack is full");
+        }
+
         stack.add(0, elem);
     }
 
