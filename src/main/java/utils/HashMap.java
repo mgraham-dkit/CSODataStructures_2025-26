@@ -57,8 +57,8 @@ public class HashMap <K, V>{
         return (V) map[slot];
     }
 
-    // todo: remove
-    // todo: containsKey
+    // todo: remove - takes in a key, deletes key and value (full Entry) from map
+    // todo: containsKey - takes in a key, returns true if key present in map, false otherwise
     // todo: keys
     // todo: values
 
