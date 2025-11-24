@@ -65,7 +65,7 @@ public class HashMap <K, V>{
             return null;
         }
 
-        return (V) map[slot].get(index);
+        return (V) map[slot].get(index).value;
     }
 
     // todo: remove - takes in a key, deletes key and value (full Entry) from map
