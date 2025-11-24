@@ -1,5 +1,6 @@
 package utils;
 
+@SuppressWarnings("unchecked")
 public class HashMap <K, V>{
     private ArrayList<Entry<K, V>> [] map = new ArrayList[103];
     private int size;
@@ -54,7 +55,17 @@ public class HashMap <K, V>{
         validateNullKey(key);
 
         int slot = hashFunction(key);
-        return (V) map[slot];
+        if(map[slot] == null){
+            return null;
+        }
+
+        Entry<K, V> targetEntry = new Entry<K, V>(key);
+        int index = map[slot].indexOf(targetEntry);
+        if(index == -1){
+            return null;
+        }
+
+        return (V) map[slot].get(index);
     }
 
     // todo: remove - takes in a key, deletes key and value (full Entry) from map
@@ -70,6 +81,11 @@ public class HashMap <K, V>{
     private static class Entry<K, V>{
         private K key;
         private V value;
+
+        public Entry(K key){
+            this.key = key;
+            this.value = null;
+        }
 
         public Entry(K key, V value){
             this.key = key;
